@@ -11,3 +11,13 @@ logElement(numbers);
 
 let logNames = (array) => array.forEach((element) => console.log(element.name));
 logNames(students);
+
+// Array.prototype.map()
+// The map() creates a new array populated with the results of calling
+// a provided function on every element in the calling array.
+// map((element, index, array) => { ... })
+// Return value: A new array with each element being the result of the callback function.
+let makeNewArray = (array, func) => array.map(func);
+let plusOne = (element) => element + 1;
+let newNumbers = makeNewArray(numbers, plusOne);
+logElement(newNumbers);
