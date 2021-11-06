@@ -21,3 +21,7 @@ let makeNewArray = (array, func) => array.map(func);
 let plusOne = (element) => element + 1;
 let newNumbers = makeNewArray(numbers, plusOne);
 logElement(newNumbers);
+
+let getNames = (element) => element.name;
+let studentsNames = makeNewArray(students, getNames);
+logElement(studentsNames);
