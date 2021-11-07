@@ -37,5 +37,12 @@ let makeFilteredArray = (array, filter, func) =>
     array.filter((element) => func(element, filter));
 
 let getElementGreaterThanNumber = (element, number) => element > number;
-let result = makeFilteredArray(numbers, 22, getElementGreaterThanNumber);
-console.log(result);
+let filteredNumbers = (filter) =>
+    makeFilteredArray(numbers, filter, getElementGreaterThanNumber);
+console.log(filteredNumbers(5));
+
+let getNameLengthGreaterThanNumber = (element, filter) =>
+    element.name.length > filter;
+let filteredNames = (filter) =>
+    makeFilteredArray(students, filter, getNameLengthGreaterThanNumber);
+console.log(filteredNames(5));
