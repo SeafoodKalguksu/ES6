@@ -18,6 +18,7 @@ logNames(students);
 // map((element, index, array) => { ... })
 // Return value: A new array with each element being the result of the callback function.
 let makeNewArray = (array, func) => array.map(func);
+
 let plusOne = (element) => element + 1;
 let newNumbers = makeNewArray(numbers, plusOne);
 logElement(newNumbers);
@@ -25,3 +26,16 @@ logElement(newNumbers);
 let getNames = (element) => element.name;
 let studentsNames = makeNewArray(students, getNames);
 logElement(studentsNames);
+
+// Array.prototype.filter()
+// The filter() method creates a new array with all elements
+// that pass the test implemented by the provided function.
+// filter((element, index, array) => { ... } )
+// Return value: A new array with the elements that pass the test.
+// If no elements pass the test, an empty array will be returned.
+let makeFilteredArray = (array, filter, func) =>
+    array.filter((element) => func(element, filter));
+
+let getElementGreaterThanNumber = (element, number) => element > number;
+let result = makeFilteredArray(numbers, 22, getElementGreaterThanNumber);
+console.log(result);
