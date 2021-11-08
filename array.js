@@ -33,16 +33,22 @@ logElement(studentsNames);
 // filter((element, index, array) => { ... } )
 // Return value: A new array with the elements that pass the test.
 // If no elements pass the test, an empty array will be returned.
-let makeFilteredArray = (array, filter, func) =>
+
+// let func = (element, filter) => if or loop condition(element, filter)
+let filteredArray = (array, filter, func) =>
     array.filter((element) => func(element, filter));
 
 let getElementGreaterThanNumber = (element, number) => element > number;
 let filteredNumbers = (filter) =>
-    makeFilteredArray(numbers, filter, getElementGreaterThanNumber);
+    filteredArray(numbers, filter, getElementGreaterThanNumber);
 console.log(filteredNumbers(5));
 
 let getNameLengthGreaterThanNumber = (element, filter) =>
     element.name.length > filter;
 let filteredNames = (filter) =>
-    makeFilteredArray(students, filter, getNameLengthGreaterThanNumber);
+    filteredArray(students, filter, getNameLengthGreaterThanNumber);
 console.log(filteredNames(5));
+
+let getStringOnly = (element, filter) => typeof element === filter;
+let stringOnly = filteredArray(mix, 'string', getStringOnly);
+console.log(stringOnly);
