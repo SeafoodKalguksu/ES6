@@ -47,7 +47,42 @@ logElements(stringElementsFromMix);
 // reduce((previousValue, currentValue, currentIndex, array) => { ... }, initialValue)
 // reduce(callbackFn, initialValue)
 // const reducer = (acc, curValue) => { ... };
+// Return value: The value that results from running the “reducer”
+// callback function to completion over the entire array.
+
 let sumOfAllNumbers = (initialValue = 0) =>
     numbers.reduce((acc, curValue) => acc + curValue, initialValue);
 console.log(sumOfAllNumbers());
 console.log(sumOfAllNumbers(1)); // 1 + sumOfAllNumbers
+
+// Array.prototype.find()
+// The find() returns the value of the first element in the provided array
+// that satisfies the provided testing function.
+// If no values satisfy the testing function, undefined is returned.
+// find((element, index, array) => { ... } )
+// Return value: The value of the first element in the array
+// that satisfies the provided testing function. Otherwise, undefined is returned.
+const inventory = [
+    { name: 'apples', quantity: 2 },
+    { name: 'bananas', quantity: 0 },
+    { name: 'cherries', quantity: 5 },
+];
+
+// Using arrow function and destructuring
+const result = inventory.find(({ name }) => name === 'cherries');
+console.log(result); // { name: 'cherries', quantity: 5 }
+
+function isPrime(element, index, array) {
+    let start = 2;
+
+    while (start <= Math.sqrt(element)) {
+        if (element % start++ === 0) {
+            return false;
+        }
+    }
+
+    return element > 1;
+}
+
+console.log([4, 6, 8, 12].find(isPrime));
+console.log([4, 5, 8, 12].find(isPrime));
