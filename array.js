@@ -6,26 +6,18 @@ let mix = [5, 'David', { name: 'Ella' }, 23, 'Frank'];
 // The forEach() executes a provided function once for each array element.
 // forEach((element, index, array) => { ... })
 // Return value: undefined
-let logElement = (array) => array.forEach((element) => console.log(element));
-logElement(numbers);
-
-let logNames = (array) => array.forEach((element) => console.log(element.name));
-logNames(students);
+const logElements = (array) => array.forEach((element) => console.log(element));
 
 // Array.prototype.map()
 // The map() creates a new array populated with the results of calling
 // a provided function on every element in the calling array.
 // map((element, index, array) => { ... })
 // Return value: A new array with each element being the result of the callback function.
-let makeNewArray = (array, func) => array.map(func);
-
-let plusOne = (element) => element + 1;
-let newNumbers = makeNewArray(numbers, plusOne);
-logElement(newNumbers);
-
-let getNames = (element) => element.name;
-let studentsNames = makeNewArray(students, getNames);
-logElement(studentsNames);
+const increaseForEachElementOfNumbers = (inc = 0) =>
+    numbers.map((element) => element + inc);
+const studentsNames = students.map((element) => element.name);
+logElements(increaseForEachElementOfNumbers(1));
+logElements(studentsNames);
 
 // Array.prototype.filter()
 // The filter() method creates a new array with all elements
@@ -33,22 +25,29 @@ logElement(studentsNames);
 // filter((element, index, array) => { ... } )
 // Return value: A new array with the elements that pass the test.
 // If no elements pass the test, an empty array will be returned.
+const numbersGreaterThanNumber = (number = 0) =>
+    numbers.filter((element) => element > number);
+logElements(numbersGreaterThanNumber(21));
 
-// let func = (element, filter) => if or loop condition(element, filter)
-let filteredArray = (array, filter, func) =>
-    array.filter((element) => func(element, filter));
+const studentsNameLengthGreaterThanNumber = (number = 0) =>
+    students.filter((element) => element.name.length > number);
+logElements(studentsNameLengthGreaterThanNumber(5));
 
-let getElementGreaterThanNumber = (element, number) => element > number;
-let filteredNumbers = (filter) =>
-    filteredArray(numbers, filter, getElementGreaterThanNumber);
-console.log(filteredNumbers(5));
+const stringElementsFromMix = mix.filter(
+    (element) => typeof element === 'string'
+);
+logElements(stringElementsFromMix);
 
-let getNameLengthGreaterThanNumber = (element, filter) =>
-    element.name.length > filter;
-let filteredNames = (filter) =>
-    filteredArray(students, filter, getNameLengthGreaterThanNumber);
-console.log(filteredNames(5));
-
-let getStringOnly = (element, filter) => typeof element === filter;
-let stringOnly = filteredArray(mix, 'string', getStringOnly);
-console.log(stringOnly);
+// Array.prototype.reduce()
+// The reduce() executes a user-supplied “reducer” callback function
+// on each element of the array passing in the return value from the calculation
+// on the preceding element.
+// The final result of running the reducer across all elements of the array is
+// a single value.
+// reduce((previousValue, currentValue, currentIndex, array) => { ... }, initialValue)
+// reduce(callbackFn, initialValue)
+// const reducer = (acc, curValue) => { ... };
+let sumOfAllNumbers = (initialValue = 0) =>
+    numbers.reduce((acc, curValue) => acc + curValue, initialValue);
+console.log(sumOfAllNumbers());
+console.log(sumOfAllNumbers(1)); // 1 + sumOfAllNumbers
