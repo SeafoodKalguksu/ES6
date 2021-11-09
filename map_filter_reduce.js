@@ -46,7 +46,7 @@ logElements(stringElementsFromMix);
 // Return value: The value that results from running the “reducer”
 // callback function to completion over the entire array.
 
-let sumOfAllNumbers = (initialValue = 0) =>
+const sumOfAllNumbers = (initialValue = 0) =>
     numbers.reduce((acc, curValue) => acc + curValue, initialValue);
 console.log(sumOfAllNumbers());
 console.log(sumOfAllNumbers(1)); // 1 + sumOfAllNumbers
