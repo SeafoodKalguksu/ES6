@@ -3,7 +3,8 @@ const inventory = [
     { name: 'cherries', quantity: 5 },
 ];
 
-let numbers = [1, 90, 78, 3, 22, 187, 21];
+const numbers = [1, 90, 78, 3, 22, 187, 21];
+const students = [{ name: 'Albert' }, { name: 'Bob' }, { name: 'Claudia' }];
 
 // Array.prototype.forEach()
 // The forEach() executes a provided function once for each array element.
@@ -43,3 +44,19 @@ console.log([4, 5, 8, 12].find(isPrime));
 const isGreaterThan100 = (element) => element > 100;
 console.log(numbers.findIndex(isGreaterThan100));
 // expected output: 3
+
+// Array.prototype.sort()
+// The sort() sorts the elements of an array in place and returns the sorted array.
+// The default sort order is ascending, built upon converting the elements into
+// strings, then comparing their sequences of UTF-16 code units values.
+console.log(numbers); // [1, 90, 78, 3, 22, 187, 21];
+console.log(numbers.sort()); // Ascending based on string
+console.log(numbers.sort().reverse());
+console.log(numbers.sort((a, b) => (a > b ? -1 : 1)));
+
+console.log(numbers.sort((a, b) => a - b)); // Ascending based on number
+console.log(numbers.sort((a, b) => a - b).reverse());
+console.log(numbers.sort((a, b) => b - a));
+
+console.log(students.sort().reverse());
+console.log(students);
