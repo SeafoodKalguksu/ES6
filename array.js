@@ -44,6 +44,13 @@ console.log([4, 5, 8, 12].find(isPrime));
 const isGreaterThan100 = (element) => element > 100;
 console.log(numbers.findIndex(isGreaterThan100));
 
+// Array.prototype.indexOf()
+// The indexOf() method returns the first index at which a given element
+// can be found in the array, or -1 if it is not present.
+// indexOf(searchElement, fromIndex)
+const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+console.log(beasts.indexOf('bison'));
+
 // Array.prototype.reverse()
 // The reverse() reverses an array in place.
 // The first array element becomes the last,
