@@ -43,7 +43,13 @@ console.log([4, 5, 8, 12].find(isPrime));
 // findIndex((element, index, array) => { ... } )
 const isGreaterThan100 = (element) => element > 100;
 console.log(numbers.findIndex(isGreaterThan100));
-// expected output: 3
+
+// Array.prototype.reverse()
+// The reverse() reverses an array in place.
+// The first array element becomes the last,
+// and the last array element becomes the first.
+// Return value: The reversed array.
+const reversedNumbers = numbers.reverse();
 
 // Array.prototype.sort()
 // The sort() sorts the elements of an array in place and returns the sorted array.
@@ -60,3 +66,38 @@ console.log(numbers.sort((a, b) => b - a));
 
 console.log(students.sort().reverse());
 console.log(students);
+
+// Array.from()
+// The Array.from() static method creates a new, shallow-copied Array instance
+// from an array-like or iterable object.
+// Return value: A new Array instance.
+// Array.from(arrayLike, (element, index) => { ... } )
+// Array.from(arrayLike, mapFn, thisArg)
+console.log(Array.from('foo'));
+console.log(Array.from([1, 2, 3], (element) => element + element));
+console.log(Array.from({ length: 5 }, (v, i) => i)); // [0, 1, 2, 3, 4]
+
+const getLength = (start, stop, step) => Math.round((stop - start) / step);
+const range = (start, stop, step) =>
+    Array.from(
+        { length: getLength(start, stop, step) },
+        (_, i) => start + i * step
+    );
+
+console.log(range(0, 6, 1)); // [ 0, 1, 2, 3, 4, 5 ]
+console.log(range(1, 6, 2)); // [ 1, 3, 5 ]
+console.log(range(-6, 0, 1)); // [ -6, -5, -4, -3, -2, -1 ]
+console.log(range(-6, 0, 2)); // [ -6, -4, -2 ]
+
+console.log(range(6, 0, -1)); // [ 6, 5, 4, 3, 2, 1 ]
+console.log(range(6, 0, -2)); // [ 6, 4, 2 ]
+console.log(range(-1, -6, -1)); // [ -1, -2, -3, -4, -5 ]
+console.log(range(-1, -6, -2)); // [ -1, -3, -5 ]
+
+// Generate the alphabet using Array.from making use of it being ordered as a sequence
+console.log(
+    range('AtoZ'.charCodeAt(0), 'AtoZ'.charCodeAt(3), 1).map((element) =>
+        String.fromCharCode(element)
+    )
+);
+// ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
