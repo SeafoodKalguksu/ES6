@@ -9,16 +9,41 @@ function forEachExample() {
         array.forEach((element) => console.log(element));
 }
 
-function isPrime(element, index, array) {
-    let start = 2;
+function includesExample() {
+    // Array.prototype.includes()
+    // The includes() determines whether an array includes a certain value
+    // among its entries, returning true or false as appropriate.
+    // includes(searchElement, fromIndex)
+    console.log([1, 2, 3].includes(2)); // true
+    console.log(['1', '2', '3'].includes(3)); // false
+    console.log([1, 2, 3].includes(3, 3)); // false
 
-    while (start <= Math.sqrt(element)) {
-        if (element % start++ === 0) {
-            return false;
-        }
-    }
+    const arr = ['a', 'b', 'c'];
+    console.log(arr.includes('c', 3)); // false
+    console.log(arr.includes('c', 100)); // false
 
-    return element > 1;
+    // array length is 3, fromIndex is -100, computed index is 3 + (-100) = -97
+    console.log(arr.includes('c', -100)); // true
+    console.log(arr.includes('a', -2)); // is equal to arr.includes('a', 1)
+}
+
+function atExample() {
+    // Array.prototype.at()
+    // The at() method takes an integer value and returns the item at that index,
+    // allowing for positive and negative integers.
+    // Negative integers count back from the last item in the array.
+    // at(index)
+    const numbers = [5, 12, 8, 130, 44];
+
+    // Using index in Array
+    console.log(`numbers[2] = ${numbers[2]}`);
+    console.log(`numbers[-1] = ${numbers[-1]}`);
+
+    // Using at() method
+    console.log(`numbers.at(-1) = ${numbers.at(-1)}`);
+
+    // Using slice() method. Note an array is returned
+    console.log(`numbers.slice(-2, -1) = ${numbers.slice(-3, -1)}`);
 }
 
 function findExample() {
@@ -34,9 +59,24 @@ function findExample() {
     ];
 
     console.log(inventory.find(({ name }) => name === 'cherries'));
+
+    function isPrime(element, index, array) {
+        let start = 2;
+
+        while (start <= Math.sqrt(element)) {
+            if (element % start++ === 0) {
+                return false;
+            }
+        }
+
+        return element > 1;
+    }
+
     console.log([4, 6, 8, 12].find(isPrime));
     console.log([4, 5, 8, 12].find(isPrime));
 }
+
+findExample();
 
 function findIndexExample() {
     // Array.prototype.findIndex()
@@ -134,25 +174,6 @@ function joinExample() {
     console.log(names.join());
     console.log(names.join(''));
     console.log(names.join(' '));
-}
-
-function atExample() {
-    // Array.prototype.at()
-    // The at() method takes an integer value and returns the item at that index,
-    // allowing for positive and negative integers.
-    // Negative integers count back from the last item in the array.
-    // at(index)
-    const numbers = [5, 12, 8, 130, 44];
-
-    // Using index in Array
-    console.log(`numbers[2] = ${numbers[2]}`);
-    console.log(`numbers[-1] = ${numbers[-1]}`);
-
-    // Using at() method
-    console.log(`numbers.at(-1) = ${numbers.at(-1)}`);
-
-    // Using slice() method. Note an array is returned
-    console.log(`numbers.slice(-2, -1) = ${numbers.slice(-3, -1)}`);
 }
 
 function concatExample() {
