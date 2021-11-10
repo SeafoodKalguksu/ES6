@@ -121,3 +121,36 @@ function fromExample() {
     );
     // ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 }
+
+function joinExample() {
+    // Array.prototype.join()
+    // The join() method creates and returns a new string by concatenating all of
+    // the elements in an array (or an array-like object), separated by commas or
+    // a specified separator string. If the array has only one item,
+    // then that item will be returned without using the separator.
+    // join(separator)
+
+    const names = ['john', 'sam', 'adam', 'ethan'];
+    console.log(names.join());
+    console.log(names.join(''));
+    console.log(names.join(' '));
+}
+
+function atExample() {
+    // Array.prototype.at()
+    // The at() method takes an integer value and returns the item at that index,
+    // allowing for positive and negative integers.
+    // Negative integers count back from the last item in the array.
+    // at(index)
+    const numbers = [5, 12, 8, 130, 44];
+
+    // Using index in Array
+    console.log(`numbers[2] = ${numbers[2]}`);
+    console.log(`numbers[-1] = ${numbers[-1]}`);
+
+    // Using at() method
+    console.log(`numbers.at(-1) = ${numbers.at(-1)}`);
+
+    // Using slice() method. Note an array is returned
+    console.log(`numbers.slice(-2, -1) = ${numbers.slice(-3, -1)}`);
+}
