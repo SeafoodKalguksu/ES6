@@ -154,3 +154,27 @@ function atExample() {
     // Using slice() method. Note an array is returned
     console.log(`numbers.slice(-2, -1) = ${numbers.slice(-3, -1)}`);
 }
+
+function concatExample() {
+    // Array.prototype.concat()
+    // The concat() method is used to merge two or more arrays.
+    // This method does not change the existing arrays, but instead returns a new array.
+    // concat(value0, value1, ... , valueN)
+    const array1 = ['a', 'b', 'c'];
+    const array2 = array1.concat(1, [2, 3]); // [ 'a', 'b', 'c', 1, 2, 3 ]
+    console.log(array2);
+
+    // Nested arrays
+    const num1 = [[1]];
+    const num2 = [2, [3]];
+    const numbers = num1.concat(num2);
+    // remove [] from num1 and num2: [[1]] => [1], [2, [3]] => 2, [3]
+    console.log(numbers); // [ [1], 2, [3] ] ]
+
+    num1[0].push(4);
+    // num2[0].push(5); // 2.push(5) because num2[0] is not an array.
+    num2[1].push(6); // [3].push(6)
+    console.log(numbers); // [ [ 1, 4 ], 2, [ 3, 6 ] ]
+}
+
+concatExample();
