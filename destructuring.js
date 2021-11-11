@@ -47,3 +47,77 @@ function obj() {
     console.log(mail);
 }
 obj();
+
+// Combined Array and Object Destructuring
+function combinedArrayAndObject() {
+    const props = [
+        { id: 1, name: 'Fizz' },
+        { id: 2, name: 'Buzz' },
+        { id: 3, name: 'FizzBuzz' },
+    ];
+    const [, , { name }] = props;
+    console.log(name);
+}
+combinedArrayAndObject();
+
+// Nested object and array destructuring
+function nestedObjectAndArray() {
+    const metadata = {
+        title: 'Scratchpad',
+        translations: [
+            {
+                locale: 'de',
+                localization_tags: [],
+                last_edit: '2014-04-14T08:43:37',
+                url: '/de/docs/Tools/Scratchpad',
+                title: 'JavaScript-Umgebung',
+            },
+        ],
+        url: '/en-US/docs/Tools/Scratchpad',
+    };
+
+    let {
+        title: englishTitle, // rename
+        translations: [
+            {
+                title: localeTitle, // rename
+            },
+        ],
+    } = metadata;
+
+    console.log(englishTitle); // "Scratchpad"
+    console.log(localeTitle); // "JavaScript-Umgebung"
+}
+nestedObjectAndArray();
+
+// For of iteration and destructuring
+function for_of() {
+    const people = [
+        {
+            name: 'Mike Smith',
+            family: {
+                mother: 'Jane Smith',
+                father: 'Harry Smith',
+                sister: 'Samantha Smith',
+            },
+            age: 35,
+        },
+        {
+            name: 'Tom Jones',
+            family: {
+                mother: 'Norah Jones',
+                father: 'Richard Jones',
+                brother: 'Howard Jones',
+            },
+            age: 25,
+        },
+    ];
+
+    for (const {
+        name: son,
+        family: { father: dad },
+    } of people) {
+        console.log(`${son}'s father is ${dad}.`);
+    }
+}
+for_of();
