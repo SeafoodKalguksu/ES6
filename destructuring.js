@@ -18,7 +18,6 @@ function array() {
     const returnArray = () => [1, 2, 3];
     [first, , third] = returnArray(); // Ignoring some returned values
 }
-array();
 
 // Object destructuring
 function obj() {
@@ -32,8 +31,10 @@ function obj() {
     ({ a, b } = { a: 1, b: 2 });
     // {a, b} = {a: 1, b: 2} is not valid stand-alone syntax, as the {a, b}
     // on the left-hand side is considered a block and not an object literal.
+}
 
-    // Nested object destructuring
+// Nested object destructuring
+function nestedObject() {
     const website = {
         url: 'https://google.com',
         alias: 'Google',
@@ -46,7 +47,7 @@ function obj() {
     } = website;
     console.log(mail);
 }
-obj();
+nestedObject();
 
 // Combined Array and Object Destructuring
 function combinedArrayAndObject() {
