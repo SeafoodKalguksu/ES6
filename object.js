@@ -1,6 +1,8 @@
 function declaration() {
-    let o = {};
-    let o = { a: 'foo', b: 42, c: {} };
+    function basic() {
+        let emptyObject = {};
+        let object = { a: 'foo', b: 42, c: {} };
+    }
 
     function shorterNotation() {
         const name = 'Seafood Kalguksu';
@@ -11,7 +13,6 @@ function declaration() {
             price, // price: price
             country: 'Korea',
         };
-        console.log(favoriteFood);
     }
 
     // A property of an object can also refer to a function or a getter or setter method.
@@ -45,4 +46,29 @@ function accessingProperties() {
     object['age']; // 42
     object.baz; // {myProp: 12}
     object.baz.myProp; //12
+}
+
+// Starting with ECS6, the object initializer syntax also supports computed
+// property names. That allows you to put an expression in brackets []
+function computedPropertyNames() {
+    let number = 0;
+    let object = {
+        ['key' + ++number]: number, // key1: 1
+        ['key' + ++number]: number, // key2: 2
+        ['key' + ++number]: number, // key3: 3
+    };
+}
+
+function spreadProperties() {
+    let obj1 = { foo: 'x', x: 42 };
+    let obj2 = { foo: 'y', y: 13 };
+
+    let clonedObj = { ...obj1 };
+    let referObj = obj1;
+    obj1.foo = 'z'; // cloneObj = { foo: 'x', x: 42 }, referObj = { foo: 'z', x: 42 }
+
+    // When using the same name for your properties, the second property will overwrite the first.
+    function duplicatePropertyNames() {
+        let mergedObj = { ...obj1, ...obj2 }; // mergedObj { foo: "y", x: 42, y: 13 }
+    }
 }
