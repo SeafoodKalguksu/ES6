@@ -4,6 +4,21 @@ function declaration() {
         let object = { a: 'foo', b: 42, c: {} };
     }
 
+    function assignMethodToProperty() {
+        let batman = {
+            name: 'Bruce Wayne',
+            age: 'Unknown',
+            // fly: function (parameters) {...}, // ES5 style
+            fly() {
+                return false;
+            },
+            // fly = () => false, // SyntaxError: Invalid shorthand property initializer
+        };
+        if (!batman.fly()) {
+            console.log("He can't fly!");
+        }
+    }
+
     function shorterNotation() {
         const name = 'Seafood Kalguksu';
         const price = '9,000 KRW';
