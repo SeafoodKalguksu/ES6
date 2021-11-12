@@ -9,15 +9,16 @@ function declaration() {
             name: 'Bruce Wayne',
             age: 'Unknown',
             // fly: function (parameters) {...}, // ES5 style
-            fly() {
-                return false;
-            },
-            // fly = () => false, // SyntaxError: Invalid shorthand property initializer
+            // fly() {  // ES6+ style
+            //     return false;
+            // },
+            fly: () => false, // fly = () => false, // SyntaxError
         };
         if (!batman.fly()) {
             console.log("He can't fly!");
         }
     }
+    assignMethodToProperty();
 
     function shorterNotation() {
         const name = 'Seafood Kalguksu';
@@ -49,6 +50,7 @@ function declaration() {
         }
     }
 }
+declaration();
 
 function accessingProperties() {
     let object = {
