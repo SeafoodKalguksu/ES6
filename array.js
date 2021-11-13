@@ -174,6 +174,30 @@ function join() {
     console.log(names.join(' '));
 }
 
+function pushAndPop() {
+    // Array.prototype.pop()
+    // The pop() method removes the last element from an array and returns that element.
+    // Return value: The removed element from the array; undefined if the array is empty.
+    const number = numbers && numbers.pop();
+
+    // Array.prototype.push()
+    // The push() method adds one or more elements to the end of an array
+    // and returns the new length of the array.
+    // push(element0, element1, ... , elementN)
+    const newLength = numbers && numbers.push(number);
+}
+
+function shiftAndUnshift() {
+    // Array.prototype.shift()
+    // The shift() removes the first element from an array and returns that removed element.
+    const number = numbers && numbers.shift();
+    // Array.prototype.unshift()
+    // The unshift() method adds one or more elements to the beginning of an array
+    // and returns the new length of the array.
+    // unshift(element0, element1, ... , elementN)
+    const newLength = numbers && numbers.unshift(number);
+}
+
 function concat() {
     // Array.prototype.concat()
     // The concat() method is used to merge two or more arrays.
