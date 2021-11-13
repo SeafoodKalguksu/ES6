@@ -24,7 +24,6 @@ function declaration() {
         batman = null;
         man.fly();
     }
-    assignMethodToProperty();
 
     function shorterNotation() {
         const name = 'Seafood Kalguksu';
@@ -56,7 +55,6 @@ function declaration() {
         }
     }
 }
-declaration();
 
 function accessingProperties() {
     let object = {
@@ -94,4 +92,17 @@ function spreadProperties() {
     function duplicatePropertyNames() {
         let mergedObj = { ...obj1, ...obj2 }; // mergedObj { foo: "y", x: 42, y: 13 }
     }
+}
+
+// Object.values()
+// The Object.values() method returns an array of a given object's own enumerable
+// property values, in the same order as that provided by a for...in loop.
+function objectValues() {
+    const obj = {
+        a: 'somestring',
+        b: 42,
+        c: false,
+    };
+
+    console.log(Object.values(obj)); // ["somestring", 42, false]
 }
