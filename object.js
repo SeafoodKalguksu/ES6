@@ -9,14 +9,20 @@ function declaration() {
             name: 'Bruce Wayne',
             age: 'Unknown',
             // fly: function (parameters) {...}, // ES5 style
-            // fly() {  // ES6+ style
-            //     return false;
-            // },
-            fly: () => false, // fly = () => false, // SyntaxError
+            fly() {
+                // ES6+ style
+                console.log(`${this.name} can't fly!`);
+            },
+            // fly: () => false, // fly = () => false, // SyntaxError
+
+            // arrow functions can only be anonymous.
+            // They are not bound to any identifier.
+            // fly: () => console.log(`${this.name} can't fly!`),
+            // undefined can't fly! this means window in browser or global in node.js
         };
-        if (!batman.fly()) {
-            console.log("He can't fly!");
-        }
+        let man = batman;
+        batman = null;
+        man.fly();
     }
     assignMethodToProperty();
 
