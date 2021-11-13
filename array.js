@@ -1,6 +1,6 @@
 const numbers = [1, 90, 78, 3, 22, 187, 21];
 
-function forEachExample() {
+function forEach() {
     // Array.prototype.forEach()
     // The forEach() executes a provided function once for each array element.
     // forEach((element, index, array) => { ... })
@@ -9,7 +9,7 @@ function forEachExample() {
         array.forEach((element) => console.log(element));
 }
 
-function includesExample() {
+function includes() {
     // Array.prototype.includes()
     // The includes() determines whether an array includes a certain value
     // among its entries, returning true or false as appropriate.
@@ -27,7 +27,7 @@ function includesExample() {
     console.log(arr.includes('a', -2)); // is equal to arr.includes('a', 1)
 }
 
-function atExample() {
+function at() {
     // Array.prototype.at()
     // The at() method takes an integer value and returns the item at that index,
     // allowing for positive and negative integers.
@@ -46,7 +46,7 @@ function atExample() {
     console.log(`numbers.slice(-2, -1) = ${numbers.slice(-3, -1)}`);
 }
 
-function findExample() {
+function find() {
     // Array.prototype.find()
     // The find() returns the value of the first element in the provided array
     // that satisfies the provided testing function.
@@ -76,9 +76,7 @@ function findExample() {
     console.log([4, 5, 8, 12].find(isPrime));
 }
 
-findExample();
-
-function findIndexExample() {
+function findIndex() {
     // Array.prototype.findIndex()
     // The findIndex() returns the index of the first element in the array
     // that satisfies the provided testing function.
@@ -88,7 +86,7 @@ function findIndexExample() {
     console.log(numbers.findIndex(isGreaterThan100));
 }
 
-function indexOfExample() {
+function indexOf() {
     // Array.prototype.indexOf()
     // The indexOf() method returns the first index at which a given element
     // can be found in the array, or -1 if it is not present.
@@ -97,7 +95,7 @@ function indexOfExample() {
     console.log(beasts.indexOf('bison'));
 }
 
-function reverseExample() {
+function reverse() {
     // Array.prototype.reverse()
     // The reverse() reverses an array in place.
     // The first array element becomes the last,
@@ -106,7 +104,7 @@ function reverseExample() {
     const reversedNumbers = numbers.reverse();
 }
 
-function sortExample() {
+function sort() {
     // Array.prototype.sort()
     // The sort() sorts the elements of an array in place and returns the sorted array.
     // The default sort order is ascending, built upon converting the elements into
@@ -125,7 +123,7 @@ function sortExample() {
     console.log(students.sort().reverse());
 }
 
-function fromExample() {
+function from() {
     // Array.from()
     // The Array.from() static method creates a new, shallow-copied Array instance
     // from an array-like or iterable object.
@@ -136,10 +134,10 @@ function fromExample() {
     console.log(Array.from([1, 2, 3], (element) => element + element));
     console.log(Array.from({ length: 5 }, (v, i) => i)); // [0, 1, 2, 3, 4]
 
-    const getLength = (start, stop, step) => Math.round((stop - start) / step);
+    const length = (start, stop, step) => Math.round((stop - start) / step);
     const range = (start, stop, step) =>
         Array.from(
-            { length: getLength(start, stop, step) },
+            { length: length(start, stop, step) },
             (_, i) => start + i * step
         );
 
@@ -158,11 +156,11 @@ function fromExample() {
         range('AtoZ'.charCodeAt(0), 'AtoZ'.charCodeAt(3), 1).map((element) =>
             String.fromCharCode(element)
         )
-    );
-    // ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
+    ); // ["A", ... , "Z"]
 }
+from();
 
-function joinExample() {
+function join() {
     // Array.prototype.join()
     // The join() method creates and returns a new string by concatenating all of
     // the elements in an array (or an array-like object), separated by commas or
@@ -176,7 +174,7 @@ function joinExample() {
     console.log(names.join(' '));
 }
 
-function concatExample() {
+function concat() {
     // Array.prototype.concat()
     // The concat() method is used to merge two or more arrays.
     // This method does not change the existing arrays, but instead returns a new array.
@@ -197,5 +195,3 @@ function concatExample() {
     num2[1].push(6); // [3].push(6)
     console.log(numbers); // [ [ 1, 4 ], 2, [ 3, 6 ] ]
 }
-
-concatExample();
