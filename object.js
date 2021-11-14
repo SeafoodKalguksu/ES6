@@ -15,8 +15,7 @@ function declaration() {
             },
             // fly: () => false, // fly = () => false, // SyntaxError
 
-            // arrow functions can only be anonymous.
-            // They are not bound to any identifier.
+            // Arrow function should not be used as methods.
             // fly: () => console.log(`${this.name} can't fly!`),
             // undefined can't fly! this means window in browser or global in node.js
         };
@@ -169,10 +168,10 @@ function create() {
         Dog.prototype.pupperino = 'Pups.';
 
         // new operator called the constructor of the Dog.
-        var maddie = new Dog();
+        let maddie = new Dog();
 
         // Create() does not call the constructor of the Dog.
-        var buddy = Object.create(Dog.prototype);
+        let buddy = Object.create(Dog.prototype);
 
         //Using Object.create()
         console.log(buddy.pupper); //Output is undefined
