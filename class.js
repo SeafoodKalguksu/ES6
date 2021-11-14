@@ -1,3 +1,17 @@
+// new operator
+// The new operator lets developers create an instance of a user-defined object
+// type or of one of the built-in object types that has a constructor function.
+function newOperator() {
+    function Dog() {
+        this.eatFood = 'NomNomNom';
+        this.eat = () => console.log(this.eatFood);
+    }
+
+    let maddie = new Dog();
+    console.log(maddie instanceof Dog); // True
+    maddie.eat(); //NomNomNom
+}
+
 // Creating an instance of an object using 'new', ES5 style
 function oldStyle() {
     function Fruit(title, price) {
