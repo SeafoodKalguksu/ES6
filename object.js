@@ -94,15 +94,36 @@ function spreadProperties() {
     }
 }
 
-// Object.values()
-// The Object.values() method returns an array of a given object's own enumerable
-// property values, in the same order as that provided by a for...in loop.
-function objectValues() {
-    const obj = {
+// Object.assign(target, ...sources)
+// The Object.assign() method copies all enumerable own properties from one or
+// more source objects to a target object. It returns the modified target object.
+function assign() {
+    const name = 'Mike';
+    const age = 30;
+    const user = { name, age };
+    const cloneUser = user; // Not clone just reference the 'user' object.
+    const user1 = Object.assign(user, { name: 'Tom' }); // Overwrite the "name: 'Mike'".
+    const user2 = Object.assign(user, { gender: 'female', name: 'Kate' });
+}
+
+function keysAndValues() {
+    const object1 = {
         a: 'somestring',
         b: 42,
         c: false,
     };
 
-    console.log(Object.values(obj)); // ["somestring", 42, false]
+    function keys() {
+        // Object.keys(obj)
+        // The Object.keys() method returns an array of a given object's own enumerable
+        // property names, iterated in the same order that a normal loop would.
+        console.log(Object.keys(object1)); // ["a", "b", "c"]
+    }
+
+    function values() {
+        // Object.values(obj)
+        // The Object.values() method returns an array of a given object's own enumerable
+        // property values, in the same order as that provided by a for...in loop.
+        console.log(Object.values(object1)); // ["somestring", 42, false]
+    }
 }
