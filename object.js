@@ -1,3 +1,14 @@
+// An object is a collection of properties, and a property is an association
+// between a name (or key) and a value.
+// object = {
+//      key: value, // property
+//      key_1: value_1, ... , key_n: value_n    // property, ... , property,
+//      Type of key of property should be string or Symbol.
+//      A property's value can be a function, in which case the property is
+//      known as a method.
+//
+// }
+
 function declaration() {
     function basic() {
         let emptyObject = {};
