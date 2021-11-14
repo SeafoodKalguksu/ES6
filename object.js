@@ -73,11 +73,12 @@ function accessingProperties() {
 // property names. That allows you to put an expression in brackets []
 function computedPropertyNames() {
     let number = 0;
+    let key = 'k_';
     let object = {
-        ['key' + ++number]: number, // key1: 1
-        ['key' + ++number]: number, // key2: 2
-        ['key' + ++number]: number, // key3: 3
-    };
+        [key + ++number]: number,
+        [key + ++number]: number,
+        [key + ++number]: number,
+    }; // { k_1: 1, k_2: 2, k_3: 3 }
 }
 
 function spreadProperties() {
@@ -108,22 +109,50 @@ function assign() {
 
 function keysAndValues() {
     const object1 = {
-        a: 'somestring',
+        a: 'some string',
         b: 42,
         c: false,
     };
 
+    // Object.keys(obj)
+    // The Object.keys() returns an array of a given object's own enumerable
+    // property names, iterated in the same order that a normal loop would.
     function keys() {
-        // Object.keys(obj)
-        // The Object.keys() method returns an array of a given object's own enumerable
-        // property names, iterated in the same order that a normal loop would.
         console.log(Object.keys(object1)); // ["a", "b", "c"]
     }
 
+    // Object.values(obj)
+    // The Object.values() returns an array of a given object's own enumerable
+    // property values, in the same order as that provided by a for...in loop.
     function values() {
-        // Object.values(obj)
-        // The Object.values() method returns an array of a given object's own enumerable
-        // property values, in the same order as that provided by a for...in loop.
         console.log(Object.values(object1)); // ["somestring", 42, false]
+    }
+}
+
+function entriesAndFromEntries() {
+    const object1 = {
+        a: 'some string',
+        b: 42,
+        c: false,
+    };
+    let arr;
+
+    // Object.entries(obj)
+    // The Object.entries() returns an array of a given object's own enumerable
+    // string-keyed property [key, value] pairs.
+    function entries() {
+        for (const [key, value] of Object.entries(object1)) {
+            console.log(`key = ${key}, value = ${value}`);
+        }
+        arr = Object.entries(object1); // [ [ 'a', 'some string' ], [ 'b', 42 ], [ 'c', false ] ]
+        console.log(arr);
+    }
+
+    // Object.fromEntries(iterable)
+    // The Object.fromEntries() method transforms a list of key-value pairs into an object.
+    // Return value: a new object whose properties are given by the entries of the iterable.
+    function fromEntries() {
+        const newObj = Object.fromEntries(arr); // { a: 'some string', b: 42, c: false }
+        console.log(newObj);
     }
 }
