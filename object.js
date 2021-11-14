@@ -107,52 +107,85 @@ function assign() {
     const user2 = Object.assign(user, { gender: 'female', name: 'Kate' });
 }
 
-function keysAndValues() {
-    const object1 = {
-        a: 'some string',
-        b: 42,
-        c: false,
-    };
+const object1 = {
+    a: 'some string',
+    b: 42,
+    c: false,
+};
 
+function keysAndValues() {
     // Object.keys(obj)
     // The Object.keys() returns an array of a given object's own enumerable
     // property names, iterated in the same order that a normal loop would.
-    function keys() {
-        console.log(Object.keys(object1)); // ["a", "b", "c"]
-    }
+    keys = () => console.log(Object.keys(object1)); // ["a", "b", "c"]
 
     // Object.values(obj)
     // The Object.values() returns an array of a given object's own enumerable
     // property values, in the same order as that provided by a for...in loop.
-    function values() {
-        console.log(Object.values(object1)); // ["somestring", 42, false]
-    }
+    values = () => console.log(Object.values(object1)); // ["somestring", 42, false]
 }
 
 function entriesAndFromEntries() {
-    const object1 = {
-        a: 'some string',
-        b: 42,
-        c: false,
-    };
-    let arr;
-
     // Object.entries(obj)
     // The Object.entries() returns an array of a given object's own enumerable
     // string-keyed property [key, value] pairs.
-    function entries() {
+    let arr;
+    entries = () => {
         for (const [key, value] of Object.entries(object1)) {
             console.log(`key = ${key}, value = ${value}`);
         }
         arr = Object.entries(object1); // [ [ 'a', 'some string' ], [ 'b', 42 ], [ 'c', false ] ]
-        console.log(arr);
-    }
+    };
 
     // Object.fromEntries(iterable)
     // The Object.fromEntries() method transforms a list of key-value pairs into an object.
     // Return value: a new object whose properties are given by the entries of the iterable.
-    function fromEntries() {
-        const newObj = Object.fromEntries(arr); // { a: 'some string', b: 42, c: false }
-        console.log(newObj);
+    fromEntries = () => console.log(Object.fromEntries(arr));
+    // { a: 'some string', b: 42, c: false }
+}
+
+// Object.create(proto, propertiesObject)
+// The Object.create() method creates a new object, using an existing object
+// as the prototype of the newly created object.
+// Return value: a new object with the specified prototype object and properties.
+function create() {
+    let dog = {
+        eat: function () {
+            console.log(this.eatFood);
+        },
+    };
+
+    let maddie = Object.create(dog);
+    console.log(dog.isPrototypeOf(maddie)); //true
+    maddie.eatFood = 'NomNomNom';
+    maddie.eat(); //NomNomNom
+
+    // Understanding the difference between Object.create() and the new operator.
+    function difference() {
+        function Dog() {
+            this.pupper = 'Pupper';
+        }
+
+        Dog.prototype.pupperino = 'Pups.';
+
+        // new operator called the constructor of the Dog.
+        var maddie = new Dog();
+
+        // Create() does not call the constructor of the Dog.
+        var buddy = Object.create(Dog.prototype);
+
+        //Using Object.create()
+        console.log(buddy.pupper); //Output is undefined
+        console.log(buddy.pupperino); //Output is Pups.
+
+        //Using New Keyword
+        console.log(maddie.pupper); //Output is Pupper
+        console.log(maddie.pupperino); //Output is Pups.
+
+        // Notice the output of buddy.pupper is undefined. Even though Object.create()
+        // sets its prototype to Dog, buddy does not have access to this.pupper
+        // in the constructor. This is due to the important difference that
+        // new Dog actually runs constructor code, whereas Object.create will not
+        // execute the constructor code.
     }
 }
