@@ -13,6 +13,19 @@ const length = globalStrings.desc.length;
 globalStrings.name[3] = 'y'; // nothing happened.
 globalStrings.name = 'Miky'; // "Miky"
 
+// String.prototype.includes(searchString, position)
+// The includes() method performs a case-sensitive search to determine whether one string may be found within another string, returning true or false as appropriate.
+function includes() {
+    const sentence = 'The quick brown fox jumps over the lazy dog.';
+    const word = 'fox';
+
+    console.log(
+        `The word "${word}" ${
+            sentence.includes(word) ? 'is' : 'is not'
+        } in the sentence.`
+    );
+}
+
 // String.prototype.indexOf(searchValue, fromIndex)
 // The indexOf() method returns the index within the calling String object of
 // the first occurrence of the specified value, starting the search at fromIndex.
@@ -111,8 +124,8 @@ maskForbiddenWord = (source, forbiddenWord) => {
     let filteredSentence = '';
     const sentence = source.toLowerCase();
     const word = forbiddenWord.toLowerCase();
-    let index = source.indexOf(word);
     let offset = 0;
+    let index = source.indexOf(word);
 
     while (index > -1) {
         filteredSentence +=
@@ -126,4 +139,7 @@ maskForbiddenWord = (source, forbiddenWord) => {
     console.log(`${filteredSentence}`);
 };
 
-maskForbiddenWord('Beach bitch Bitch Bitch Beachbitch beach bitch!', 'bitch');
+checkForbiddenWord = (source = '', forbiddenWord = '') =>
+    source.includes(forbiddenWord) ? true : false;
+
+checkForbiddenWord('Beach bitch Bitch Bitch Beachbitch beach bitch!', 'bitch');
