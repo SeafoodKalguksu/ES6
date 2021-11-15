@@ -3,6 +3,7 @@ const globalStrings = {
     text: 'Mozilla',
     name: 'Mike',
     greeting: '   Hello world!   ',
+    fruits: ['01. Orange', '02. Apple', '03. Kiwi', '04. Pear'],
 };
 
 // Property
@@ -97,3 +98,11 @@ fromCodePoint = () => {
 
 toUpperCase = () => globalStrings.desc.toUpperCase();
 toLowerCase = () => globalStrings.desc.toLowerCase();
+
+logFruitName = () => {
+    let fruitNameList = [];
+    globalStrings.fruits.forEach((element) =>
+        fruitNameList.push(element.slice(4))
+    );
+    console.log(fruitNameList);
+};
