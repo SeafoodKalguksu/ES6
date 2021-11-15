@@ -72,3 +72,28 @@ substr = () => {
     console.log(globalStrings.text.substr(-20, 2)); // 'Mo'
     console.log(globalStrings.text.substr(20, 2)); // ''
 };
+
+// String.prototype.trim()
+// The trim() method removes whitespace from both ends of a string. Whitespace
+// in this context is all the whitespace characters (space, tab, no-break space,
+// etc.) and all the line terminator characters (LF, CR, etc.).
+trim = () => console.log(globalStrings.greeting.trim());
+// expected output: "   Hello world!   " => "Hello world!"
+
+// String.prototype.codePointAt(pos)
+// returns a non-negative integer that is the UTF-16 code point value.
+codePointAt = () => {
+    console.log(globalStrings.name.codePointAt()); // "M"
+    console.log(globalStrings.name.codePointAt(1)); // "i"
+};
+
+// String.fromCodePoint(num1, num2, ..., numN)
+// The static String.fromCodePoint() method returns a string created by using
+// the specified sequence of code points.
+fromCodePoint = () => {
+    console.log(String.fromCodePoint(42)); // "*"
+    console.log(String.fromCodePoint(65, 90)); // "AZ"
+};
+
+toUpperCase = () => globalStrings.desc.toUpperCase();
+toLowerCase = () => globalStrings.desc.toLowerCase();
