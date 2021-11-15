@@ -109,8 +109,8 @@ logFruitName = () => {
 
 maskForbiddenWord = (source, forbiddenWord) => {
     let filteredSentence = '';
-    let sentence = source.toLowerCase();
-    let word = forbiddenWord.toLowerCase();
+    const sentence = source.toLowerCase();
+    const word = forbiddenWord.toLowerCase();
     let index = source.indexOf(word);
     let offset = 0;
 
