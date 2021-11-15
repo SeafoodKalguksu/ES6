@@ -106,3 +106,24 @@ logFruitName = () => {
     );
     console.log(fruitNameList);
 };
+
+maskForbiddenWord = (source, forbiddenWord) => {
+    let filteredSentence = '';
+    let sentence = source.toLowerCase();
+    let word = forbiddenWord.toLowerCase();
+    let index = source.indexOf(word);
+    let offset = 0;
+
+    while (index > -1) {
+        filteredSentence +=
+            source.slice(offset, offset + index) + '*'.repeat(word.length);
+        offset += index + word.length;
+        index = sentence.slice(offset).indexOf(word);
+    }
+    filteredSentence += source.slice(offset);
+
+    console.log(`${source}`);
+    console.log(`${filteredSentence}`);
+};
+
+maskForbiddenWord('Beach bitch Bitch Bitch Beachbitch beach bitch!', 'bitch');
