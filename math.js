@@ -1,3 +1,6 @@
+// Math is a built-in object that has properties and methods for mathematical
+// constants and functions. It’s not a function object.
+// Math works with the Number type. It doesn't work with BigInt.
 function math() {
     let num1 = 5.1;
     let num2 = 5.7;
@@ -24,6 +27,9 @@ function math() {
     abs = () => Math.abs(-1); // 1
     pow = () => Math.pow(2, 10); // 2¹⁰ = 1024
     sqrt = () => Math.sqrt(16); //4
+
+    const roundNumber = (number, decimals) =>
+        decimals == false ? Math.round(number) : number.toFixed(decimals);
 }
 
 function number() {
