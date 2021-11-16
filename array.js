@@ -1,21 +1,25 @@
 global = {
     numbers: [1, 90, 78, 3, 22, 187, 21],
     fruits: ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'],
+    beasts: ['ant', 'bison', 'camel', 'duck', 'bison'],
 };
 
+// Array.prototype.forEach()
+// The forEach() executes a provided function once for each array element.
+// forEach((element, index, array) => { ... })
+// Return value: undefined
 function forEach() {
-    // Array.prototype.forEach()
-    // The forEach() executes a provided function once for each array element.
-    // forEach((element, index, array) => { ... })
-    // Return value: undefined
     global.numbers.forEach((element) => console.log(element));
+    global.fruits.forEach((element, index) =>
+        console.log(`index = ${index}, element = ${element}`)
+    );
 }
 
+// Array.prototype.includes()
+// The includes() determines whether an array includes a certain value
+// among its entries, returning true or false as appropriate.
+// includes(searchElement, fromIndex)
 function includes() {
-    // Array.prototype.includes()
-    // The includes() determines whether an array includes a certain value
-    // among its entries, returning true or false as appropriate.
-    // includes(searchElement, fromIndex)
     console.log([1, 2, 3].includes(2)); // true
     console.log(['1', '2', '3'].includes(3)); // false
     console.log([1, 2, 3].includes(3, 3)); // false
@@ -29,13 +33,12 @@ function includes() {
     console.log(arr.includes('a', -2)); // is equal to arr.includes('a', 1)
 }
 
+// Array.prototype.at()
+// The at() method takes an integer value and returns the item at that index,
+// allowing for positive and negative integers.
+// Negative integers count back from the last item in the array.
+// at(index)
 function at() {
-    // Array.prototype.at()
-    // The at() method takes an integer value and returns the item at that index,
-    // allowing for positive and negative integers.
-    // Negative integers count back from the last item in the array.
-    // at(index)
-
     // Using index in Array
     console.log(`global.numbers[2] = ${global.numbers[2]}`);
     console.log(`global.numbers[-1] = ${global.numbers[-1]}`);
@@ -79,39 +82,51 @@ function find() {
     console.log([4, 5, 8, 12].find(isPrime));
 }
 
+// Array.prototype.findIndex()
+// The findIndex() returns the index of the first element in the array
+// that satisfies the provided testing function.
+// Otherwise, it returns -1, indicating that no element passed the test.
+// findIndex((element, index, array) => { ... } )
 function findIndex() {
-    // Array.prototype.findIndex()
-    // The findIndex() returns the index of the first element in the array
-    // that satisfies the provided testing function.
-    // Otherwise, it returns -1, indicating that no element passed the test.
-    // findIndex((element, index, array) => { ... } )
     const isGreaterThan100 = (element) => element > 100;
     console.log(global.numbers.findIndex(isGreaterThan100));
 }
 
+// Array.prototype.indexOf()
+// The indexOf() method returns the first index at which a given element
+// can be found in the array, or -1 if it is not present.
+// indexOf(searchElement, fromIndex)
 function indexOf() {
-    // Array.prototype.indexOf()
-    // The indexOf() method returns the first index at which a given element
-    // can be found in the array, or -1 if it is not present.
-    // indexOf(searchElement, fromIndex)
-    const beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
-    console.log(beasts.indexOf('bison'));
+    // global.beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+    console.log(global.beasts.indexOf('bison')); // 1
+    console.log(global.beasts.indexOf('bison', 2)); // 4
 }
 
+// Array.prototype.lastIndexOf(searchElement, fromIndex)
+// The lastIndexOf() method returns the last index at which a given element can
+// be found in the array, or -1 if it is not present.
+// The array is searched backwards, starting at fromIndex.
+function lastIndexOf() {
+    // global.beasts = ['ant', 'bison', 'camel', 'duck', 'bison'];
+    console.log(global.beasts.lastIndexOf('bison')); // 4
+    console.log(global.beasts.lastIndexOf('bison', 0)); // -1
+    console.log(global.beasts.lastIndexOf('bison', -2)); // 1
+}
+
+// Array.prototype.reverse()
+// The reverse() reverses an array in place.
+// The first array element becomes the last,
+// and the last array element becomes the first.
+// Return value: The reversed array.
 function reverse() {
-    // Array.prototype.reverse()
-    // The reverse() reverses an array in place.
-    // The first array element becomes the last,
-    // and the last array element becomes the first.
-    // Return value: The reversed array.
     const reversedNumbers = global.numbers.reverse();
 }
 
+// Array.prototype.sort()
+// The sort() sorts the elements of an array in place and returns the sorted array.
+// The default sort order is ascending, built upon converting the elements into
+// strings, then comparing their sequences of UTF-16 code units values.
 function sort() {
-    // Array.prototype.sort()
-    // The sort() sorts the elements of an array in place and returns the sorted array.
-    // The default sort order is ascending, built upon converting the elements into
-    // strings, then comparing their sequences of UTF-16 code units values.
     console.log(global.numbers); // [1, 90, 78, 3, 22, 187, 21];
     console.log(global.numbers.sort()); // Ascending based on string
     console.log(global.numbers.sort().reverse());
@@ -126,13 +141,13 @@ function sort() {
     console.log(students.sort().reverse());
 }
 
+// Array.from()
+// The Array.from() static method creates a new, shallow-copied Array instance
+// from an array-like or iterable object.
+// Return value: A new Array instance.
+// Array.from(arrayLike, (element, index) => { ... } )
+// Array.from(arrayLike, mapFn, thisArg)
 function from() {
-    // Array.from()
-    // The Array.from() static method creates a new, shallow-copied Array instance
-    // from an array-like or iterable object.
-    // Return value: A new Array instance.
-    // Array.from(arrayLike, (element, index) => { ... } )
-    // Array.from(arrayLike, mapFn, thisArg)
     console.log(Array.from('foo'));
     console.log(Array.from([1, 2, 3], (element) => element + element));
     console.log(Array.from({ length: 5 }, (v, i) => i)); // [0, 1, 2, 3, 4]
@@ -162,14 +177,13 @@ function from() {
     ); // ["A", ... , "Z"]
 }
 
+// Array.prototype.join()
+// The join() method creates and returns a new string by concatenating all of
+// the elements in an array (or an array-like object), separated by commas or
+// a specified separator string. If the array has only one item,
+// then that item will be returned without using the separator.
+// join(separator)
 function join() {
-    // Array.prototype.join()
-    // The join() method creates and returns a new string by concatenating all of
-    // the elements in an array (or an array-like object), separated by commas or
-    // a specified separator string. If the array has only one item,
-    // then that item will be returned without using the separator.
-    // join(separator)
-
     const names = ['john', 'sam', 'adam', 'ethan'];
     console.log(names.join());
     console.log(names.join(''));
@@ -193,6 +207,7 @@ function shiftAndUnshift() {
     // Array.prototype.shift()
     // The shift() removes the first element from an array and returns that removed element.
     const number = global.numbers && global.numbers.shift();
+
     // Array.prototype.unshift()
     // The unshift() method adds one or more elements to the beginning of an array
     // and returns the new length of the array.
@@ -200,24 +215,23 @@ function shiftAndUnshift() {
     const newLength = global.numbers && global.numbers.unshift(number);
 }
 
+// Array.prototype.concat()
+// The concat() method is used to merge two or more arrays.
+// This method does not change the existing arrays, but instead returns a new array.
+// concat(value0, value1, ... , valueN)
 function concat() {
-    // Array.prototype.concat()
-    // The concat() method is used to merge two or more arrays.
-    // This method does not change the existing arrays, but instead returns a new array.
-    // concat(value0, value1, ... , valueN)
     const array1 = ['a', 'b', 'c'];
     const array2 = array1.concat(1, [2, 3]); // [ 'a', 'b', 'c', 1, 2, 3 ]
-    console.log(array2);
 
     // Nested arrays
     const num1 = [[1]];
     const num2 = [2, [3]];
-    numbers = num1.concat(num2);
-    // remove [] from num1 and num2: [[1]] => [1], [2, [3]] => 2, [3]
-    console.log(global.numbers); // [ [1], 2, [3] ] ]
 
-    num1[0].push(4);
-    // num2[0].push(5); // 2.push(5) because num2[0] is not an array.
+    numbers = num1.concat(num2); // [ [1], 2, [3] ] ]
+    // remove [] from num1 and num2: [[1]] => [1], [2, [3]] => 2, [3]
+
+    num1[0].push(4); // [ 1, 4 ]
+    // num2[0].push(5); // 2.push(5): type error occurred because 2 is not an array.
     num2[1].push(6); // [3].push(6)
     console.log(global.numbers); // [ [ 1, 4 ], 2, [ 3, 6 ] ]
 }
