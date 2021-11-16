@@ -1,5 +1,5 @@
 global = {
-    numbers: [1, 90, 78, 3, 22, 187, 21],
+    numbers: [1, 90, 78, 3, 22, 187, 11, 21],
     fruits: ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'],
     beasts: ['ant', 'bison', 'camel', 'duck', 'bison'],
 };
@@ -13,6 +13,40 @@ function forEach() {
     global.fruits.forEach((element, index) =>
         console.log(`index = ${index}, element = ${element}`)
     );
+
+    function isPrime(element) {
+        let start = 2;
+
+        while (start <= Math.sqrt(element)) {
+            if (element % start++ === 0) {
+                return false;
+            }
+        }
+
+        return element > 1;
+    }
+
+    function getPrimeNumbers(numbers, primeNumbers) {
+        numbers.forEach((element) => {
+            if (isPrime(element)) primeNumbers.push(element);
+        });
+    }
+
+    let primeNumbers = [];
+    getPrimeNumbers(global.numbers, primeNumbers);
+    console.log(`prime numbers = ${primeNumbers}`);
+
+    function getEvenNumbers(numbers, evenNumbers) {
+        numbers.forEach((element) => {
+            if (element % 2 === 0) {
+                evenNumbers.push(element);
+            }
+        });
+    }
+
+    let evenNumbers = [];
+    getEvenNumbers(global.numbers, evenNumbers);
+    console.log(`even numbers = ${evenNumbers}`);
 }
 
 // Array.prototype.includes()
@@ -63,23 +97,7 @@ function find() {
         { name: 'apples', quantity: 2 },
         { name: 'cherries', quantity: 5 },
     ];
-
     console.log(inventory.find(({ name }) => name === 'cherries'));
-
-    function isPrime(element, index, array) {
-        let start = 2;
-
-        while (start <= Math.sqrt(element)) {
-            if (element % start++ === 0) {
-                return false;
-            }
-        }
-
-        return element > 1;
-    }
-
-    console.log([4, 6, 8, 12].find(isPrime));
-    console.log([4, 5, 8, 12].find(isPrime));
 }
 
 // Array.prototype.findIndex()
