@@ -13,6 +13,11 @@ global = {
     ],
 };
 
+// Array.isArray()
+Array.isArray(global.fruits)
+    ? console.log('global.fruits is an array')
+    : console.log('global.fruits is not an array');
+
 // Array.prototype.forEach()
 // The forEach() executes a provided function once for each array element.
 // forEach((element, index, array) => { ... })
