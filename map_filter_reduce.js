@@ -1,6 +1,10 @@
 const global = {
     numbers: [1, 90, 78, 3, 22, 187, 21],
-    students: [{ name: 'Albert' }, { name: 'Bob' }, { name: 'Claudia' }],
+    students: [
+        { name: 'Albert', age: 19 },
+        { name: 'Bob', age: 20 },
+        { name: 'Claudia', age: 22 },
+    ],
 };
 
 const logElements = (array) => array.forEach((element) => console.log(element));
@@ -16,6 +20,11 @@ function map() {
     const studentsNames = global.students.map((element) => element.name);
     logElements(increaseForEachElementOfNumbers(1));
     logElements(studentsNames);
+
+    let newStudentsList = global.students.map((student, index) =>
+        Object.assign({}, student, { id: index + 1, isAdult: student.age > 19 })
+    );
+    logElements(newStudentsList);
 }
 
 // Array.prototype.filter()
@@ -41,6 +50,9 @@ function filter() {
 
     let evenNumbers = global.numbers.filter((element) => element % 2 === 0);
     console.log('evenNumbers = ', evenNumbers);
+
+    let adultStudents = global.students.filter((student) => student.age > 19);
+    console.log('adult students = ', adultStudents);
 }
 
 // Array.prototype.reduce()
