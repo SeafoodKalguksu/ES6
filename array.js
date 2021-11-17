@@ -157,19 +157,22 @@ function reverse() {
     const reversedNumbers = global.numbers.reverse();
 }
 
-// Array.prototype.sort()
+// Array.prototype.sort((firstEl, secondEl) => { ... } )
 // The sort() sorts the elements of an array in place and returns the sorted array.
 // The default sort order is ascending, built upon converting the elements into
 // strings, then comparing their sequences of UTF-16 code units values.
-function sort() {
-    console.log(global.numbers); // [1, 90, 78, 3, 22, 187, 21];
-    console.log(global.numbers.sort()); // Ascending based on string
-    console.log(global.numbers.sort().reverse());
-    console.log(global.numbers.sort((a, b) => (a > b ? -1 : 1)));
+// compareFunction(a, b) return value	    sort order
+//              > 0	                        sort b before a
+//              < 0	                        sort a before b
+//              === 0	                    keep original order of a and b
 
-    console.log(global.numbers.sort((a, b) => a - b)); // Ascending based on number
-    console.log(global.numbers.sort((a, b) => a - b).reverse());
-    console.log(global.numbers.sort((a, b) => b - a));
+function sort() {
+    // global.numbers = [1, 90, 78, 3, 22, 187, 11, 21];
+    console.log(global.numbers.sort()); //  [1, 187, 21, 22, 3, 78, 90]
+    console.log(global.numbers.sort().reverse()); // [90, 78, 3, 22, 21, 187, 11, 1]
+
+    console.log(global.numbers.sort((a, b) => a - b)); // [1, 3, 11, 21, 22, 78, 90, 187]
+    console.log(global.numbers.sort((a, b) => b - a)); // [187, 90, 78, 22, 21, 11, 3, 1]
 
     const students = [{ name: 'Albert' }, { name: 'Bob' }, { name: 'Claudia' }];
     console.log(students);
