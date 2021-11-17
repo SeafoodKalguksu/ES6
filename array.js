@@ -2,6 +2,15 @@ global = {
     numbers: [1, 90, 78, 3, 22, 187, 11, 21],
     fruits: ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'],
     beasts: ['ant', 'bison', 'camel', 'duck', 'bison'],
+    userList: [
+        { name: 'mike', age: 30 },
+        { name: 'Jane', age: 27 },
+        { name: 'Tom', age: 10 },
+    ],
+    inventory: [
+        { name: 'apples', quantity: 2 },
+        { name: 'cherries', quantity: 5 },
+    ],
 };
 
 // Array.prototype.forEach()
@@ -93,11 +102,14 @@ function find() {
     // If no values satisfy the testing function, undefined is returned.
     // find((element, index, array) => { ... } )
     // Using arrow function and destructuring
-    const inventory = [
-        { name: 'apples', quantity: 2 },
-        { name: 'cherries', quantity: 5 },
-    ];
-    console.log(inventory.find(({ name }) => name === 'cherries'));
+    console.log(global.inventory.find(({ name }) => name === 'cherries'));
+
+    const minorUser = global.userList.find((user) =>
+        user.age < 20 ? true : false
+    );
+    console.log(
+        `The minor user's name is ${minorUser.name} and his age is ${minorUser.age}.`
+    );
 }
 
 // Array.prototype.findIndex()
