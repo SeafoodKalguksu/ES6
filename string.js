@@ -1,4 +1,4 @@
-const global = {
+const const global = {
     desc: 'This is a description for global object.',
     company: 'Mozilla',
     name: 'Mike',

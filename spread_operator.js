@@ -1,4 +1,4 @@
-global = {
+const global = {
     user: { name: 'Mike' },
     info: { age: 30 },
     fe: ['JavaScript', 'React'],

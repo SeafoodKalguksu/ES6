@@ -1,4 +1,4 @@
-global = {
+const global = {
     numbers: [1, 90, 78, 3, 22, 187, 11, 21],
     fruits: ['Banana', 'Orange', 'Lemon', 'Apple', 'Mango'],
     beasts: ['ant', 'bison', 'camel', 'duck', 'bison'],
