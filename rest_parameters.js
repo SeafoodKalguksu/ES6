@@ -56,12 +56,29 @@ function restParameters() {
         }
 
         const user1 = new User('Mike', 29, 'HTML5', 'CSS');
-        const user2 = new User('Tom', 19, 'JavaScript', 'React');
-        const user3 = new User('Jane', 29, 'English');
-        const user4 = new User('Amy', 21);
+        const user2 = new User('Jane', 29, 'English');
+        const user3 = new User('Amy', 21);
         console.log(user1);
         console.log(user2);
         console.log(user3);
-        console.log(user4);
+    }
+
+    function example2() {
+        let user = { name: 'Mike' };
+        let info = { age: 30 };
+        let fe = ['JavaScript', 'React'];
+        let langs = ['Korean', 'English'];
+
+        // ES5 style
+        user = Object.assign({}, user, info, { skills: [] });
+        fe.forEach((e) => user.skills.push(e));
+        langs.forEach((e) => user.skills.push(e));
+
+        // ES6+ style
+        user = {
+            ...user,
+            ...info,
+            skills: [...fe, ...langs],
+        };
     }
 }
