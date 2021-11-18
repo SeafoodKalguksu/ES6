@@ -4,6 +4,7 @@ const global = {
         { name: 'Albert', age: 19 },
         { name: 'Bob', age: 20 },
         { name: 'Claudia', age: 22 },
+        { name: 'Bruce', age: 17 },
     ],
 };
 
@@ -71,4 +72,13 @@ function reduce() {
         global.numbers.reduce((acc, curValue) => acc + curValue, initialValue);
     console.log(sumOfAllNumbers());
     console.log(sumOfAllNumbers(1)); // 1 + sumOfAllNumbers
+
+    const adultStudents = global.students.reduce((acc, cur) => {
+        if (cur.age > 19) {
+            acc.push(cur);
+        }
+        return acc;
+    }, []);
+
+    console.log(adultStudents); // [ { name: 'Bob', age: 20 }, { name: 'Claudia', age: 22 } ]
 }
