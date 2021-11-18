@@ -62,23 +62,4 @@ function restParameters() {
         console.log(user2);
         console.log(user3);
     }
-
-    function example2() {
-        let user = { name: 'Mike' };
-        let info = { age: 30 };
-        let fe = ['JavaScript', 'React'];
-        let langs = ['Korean', 'English'];
-
-        // ES5 style
-        user = Object.assign({}, user, info, { skills: [] });
-        fe.forEach((e) => user.skills.push(e));
-        langs.forEach((e) => user.skills.push(e));
-
-        // ES6+ style
-        user = {
-            ...user,
-            ...info,
-            skills: [...fe, ...langs],
-        };
-    }
 }
