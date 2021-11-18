@@ -34,3 +34,44 @@ function practicalClosure() {
     const size12 = makeSizer(12);
     const size14 = makeSizer(14);
 }
+
+// Emulating private methods with closures
+// JavaScript does not provide a native way of declaring methods as private, but it is possible to emulate private methods using closures. Private methods aren't just useful for restricting access to code. They also provide a powerful way of managing your global namespace.
+function emulatePrivateMethodsWithClosures() {
+    function counter() {
+        let privateCounter = 0;
+        function changeBy(val) {
+            privateCounter += val;
+        }
+
+        return {
+            // ES5 style
+            increase: function () {
+                changeBy(1);
+            },
+            // ES6+ style
+            decrease() {
+                changeBy(-1);
+            },
+            getCounter() {
+                return privateCounter;
+            },
+        };
+    }
+
+    // Calling a new counter() every line.
+    console.log(counter().getCounter()); // 0.
+    counter().increase();
+    counter().increase();
+    console.log(counter().getCounter()); // 2.
+    counter().decrease();
+    console.log(counter().getCounter()); // 1.
+
+    let myCounter = counter();
+    console.log(myCounter.getCounter()); // 0.
+    myCounter.increase();
+    myCounter.increase();
+    console.log(myCounter.getCounter()); // 2.
+    myCounter.decrease();
+    console.log(myCounter.getCounter()); // 1.
+}
