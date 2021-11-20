@@ -91,3 +91,31 @@ function apply() {
         console.log(myInstance.constructor); // logs 'MyConstructor'
     }
 }
+
+function difference() {
+    console.log('Max by using call() = ', Math.max.call(null, 3, 10, 1, 6, 4));
+    console.log(
+        'Max by using apply() = ',
+        Math.max.apply(null, [3, 10, 1, 6, 4])
+    );
+}
+
+// Function.prototype.bind(thisArg[, arg1[, arg2[, ...]]])
+// The bind() method creates a new function that, when called, has its this keyword set to the provided value, with a given sequence of arguments preceding any provided when the new function is called.
+function bind() {
+    this.x = 9; // variable 'x'
+    var module = {
+        x: 81, // module's property's key 'x'
+        getX: function () {
+            return this.x;
+        },
+    };
+
+    module.getX(); // 81
+
+    const retrieveX = module.getX; // const retrieveX = () => this.x;
+    console.log(retrieveX()); // 9; the function gets invoked at the global scope
+
+    //  Create a new function with 'this' bound to module
+    console.log(module.getX.bind(module)());
+}
