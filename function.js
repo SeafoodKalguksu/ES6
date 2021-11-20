@@ -111,11 +111,12 @@ function bind() {
         },
     };
 
-    module.getX(); // 81
+    module.getX(); // 81, executes the function.
 
     const retrieveX = module.getX; // const retrieveX = () => this.x;
     console.log(retrieveX()); // 9; the function gets invoked at the global scope
 
     //  Create a new function with 'this' bound to module
+    console.log(retrieveX.bind(module)());
     console.log(module.getX.bind(module)());
 }
