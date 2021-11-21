@@ -12,22 +12,54 @@ function newOperator() {
     maddie.eat(); //NomNomNom
 }
 
-// Creating an instance of an object using 'new', ES5 style
-function oldStyle() {
-    function Fruit(title, price) {
-        this.title = title;
-        this.price = price;
-        this.show = () =>
-            console.log(`title = ${this.title}, price = ${this.price}`);
+// Creating an instance
+function createInstance() {
+    // Using a constructor function, ES5 style
+    function es5() {
+        function Fruit(name, price) {
+            this.name = name;
+            this.price = price;
+            this.show = () =>
+                console.log(`name = ${this.name}, price = ${this.price}`);
+        }
+
+        // 'new' makes a new instance of the Fruit() and return the instance to variables.
+        fruit1 = new Fruit('Kiwi', 1000);
+        fruit2 = new Fruit('Orange', 2000);
+        console.log(fruit1); // Fruit { name: 'Kiwi', price: 1000, show: [Function ()] }
+        console.log(fruit2); // Fruit { name: 'Orange', price: 2000, show: [Function ()] }
+
+        // Fruit() without 'new' means that is just calling Fruit().
+        fruit3 = Fruit('Cherry', 3000); // return nothing to fruit3
+        console.log(fruit3); // undefined
+
+        let number = 0;
+        for (const key in fruit1) {
+            console.log(`key_${++number} = ${key}`);
+        }
     }
 
-    // 'new' makes a new instance of the Fruit() and return the instance to variables.
-    fruit1 = new Fruit('Kiwi', 1000);
-    fruit2 = new Fruit('Orange', 2000);
-    console.log(fruit1); // Fruit { title: 'Kiwi', price: 1000, show: [Function ()] }
-    console.log(fruit2); // Fruit { title: 'Orange', price: 2000, show: [Function ()] }
+    // Using class, ES6++ style
+    function es6() {
+        class Fruit {
+            constructor(name, price) {
+                this.name = name;
+                this.price = price;
+            }
 
-    // Fruit() without 'new' means that is just calling Fruit().
-    fruit3 = Fruit('Cherry', 3000); // return nothing to fruit3
-    console.log(fruit3); // undefined
+            showName() {
+                console.log(this.name);
+            }
+        }
+
+        const favoriteFruit = new Fruit('mango', 1500);
+        let number = 0;
+
+        // class's methods does not belong to properties of class
+        for (const key in favoriteFruit) {
+            console.log(`key_${++number} = ${key}`);
+        }
+    }
 }
+
+// ES6+ style
