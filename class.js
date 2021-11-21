@@ -63,24 +63,24 @@ function createInstance() {
     }
 }
 
-function inheritance() {
-    // ES6+ style
-    class Car {
-        constructor(color, door) {
-            this.color = color;
-            this.door = door;
-            this.wheel = 4;
-        }
-
-        start() {
-            console.log('start the engine!');
-        }
-
-        stop() {
-            console.log('stop the engine!');
-        }
+class Car {
+    constructor(color, door) {
+        this.color = color;
+        this.door = door;
+        this.wheel = 4;
     }
 
+    start() {
+        console.log('start the engine!');
+    }
+
+    stop() {
+        console.log('stop the engine!');
+    }
+}
+
+function inheritance() {
+    // ES6+ style
     class Benz extends Car {
         park() {
             console.log('park the car!');
@@ -88,4 +88,21 @@ function inheritance() {
     }
 
     const e300 = new Benz('white', 4);
+}
+
+function overriding() {
+    class Bmw extends Car {
+        constructor(color, door) {
+            // Must call constructor() of super class before assigning values to properties of sub class
+            super(color, door);
+            this.offroad = false;
+        }
+        stop() {
+            super.stop();
+            console.log('breaking!');
+        }
+    }
+
+    const z4 = new Bmw('red', 2);
+    z4.stop();
 }
