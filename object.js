@@ -8,6 +8,11 @@
 //      known as a method.
 //
 // }
+const global = {
+    a: 'some string',
+    b: 42,
+    c: false,
+};
 
 function declaration() {
     function basic() {
@@ -66,6 +71,14 @@ function declaration() {
     }
 }
 
+// Object.prototype.hasOwnProperty()
+// The hasOwnProperty() returns a boolean indicating whether the object has the specified property as its own property (excluding inherited properties).
+function hasOwnProperty() {
+    global.hasOwnProperty('a')
+        ? console.log(`global has ${a} as a property.`)
+        : console.log(`global does not have ${a} as a property.`);
+}
+
 function accessingProperties() {
     let object = {
         foo: 'bar',
@@ -117,43 +130,6 @@ function assign() {
     const user2 = Object.assign(user, { gender: 'female', name: 'Kate' });
 }
 
-const object1 = {
-    a: 'some string',
-    b: 42,
-    c: false,
-};
-
-function keysAndValues() {
-    // Object.keys(obj)
-    // The Object.keys() returns an array of a given object's own enumerable
-    // property names, iterated in the same order that a normal loop would.
-    keys = () => console.log(Object.keys(object1)); // ["a", "b", "c"]
-
-    // Object.values(obj)
-    // The Object.values() returns an array of a given object's own enumerable
-    // property values, in the same order as that provided by a for...in loop.
-    values = () => console.log(Object.values(object1)); // ["somestring", 42, false]
-}
-
-function entriesAndFromEntries() {
-    // Object.entries(obj)
-    // The Object.entries() returns an array of a given object's own enumerable
-    // string-keyed property [key, value] pairs.
-    let arr;
-    entries = () => {
-        for (const [key, value] of Object.entries(object1)) {
-            console.log(`key = ${key}, value = ${value}`);
-        }
-        arr = Object.entries(object1); // [ [ 'a', 'some string' ], [ 'b', 42 ], [ 'c', false ] ]
-    };
-
-    // Object.fromEntries(iterable)
-    // The Object.fromEntries() method transforms a list of key-value pairs into an object.
-    // Return value: a new object whose properties are given by the entries of the iterable.
-    fromEntries = () => console.log(Object.fromEntries(arr));
-    // { a: 'some string', b: 42, c: false }
-}
-
 // Object.create(proto, propertiesObject)
 // The Object.create() method creates a new object, using an existing object
 // as the prototype of the newly created object.
@@ -198,4 +174,35 @@ function create() {
         // new Dog actually runs constructor code, whereas Object.create will not
         // execute the constructor code.
     }
+}
+
+function keysAndValues() {
+    // Object.keys(obj)
+    // The Object.keys() returns an array of a given object's own enumerable
+    // property names, iterated in the same order that a normal loop would.
+    keys = () => console.log(Object.keys(global)); // ["a", "b", "c"]
+
+    // Object.values(obj)
+    // The Object.values() returns an array of a given object's own enumerable
+    // property values, in the same order as that provided by a for...in loop.
+    values = () => console.log(Object.values(global)); // ["somestring", 42, false]
+}
+
+function entriesAndFromEntries() {
+    // Object.entries(obj)
+    // The Object.entries() returns an array of a given object's own enumerable
+    // string-keyed property [key, value] pairs.
+    let arr;
+    entries = () => {
+        for (const [key, value] of Object.entries(global)) {
+            console.log(`key = ${key}, value = ${value}`);
+        }
+        arr = Object.entries(global); // [ [ 'a', 'some string' ], [ 'b', 42 ], [ 'c', false ] ]
+    };
+
+    // Object.fromEntries(iterable)
+    // The Object.fromEntries() method transforms a list of key-value pairs into an object.
+    // Return value: a new object whose properties are given by the entries of the iterable.
+    fromEntries = () => console.log(Object.fromEntries(arr));
+    // { a: 'some string', b: 42, c: false }
 }
