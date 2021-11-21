@@ -55,11 +55,37 @@ function createInstance() {
         const favoriteFruit = new Fruit('mango', 1500);
         let number = 0;
 
-        // class's methods does not belong to properties of class
+        // object's methods belong to property of object
+        // class's methods belong to Prototype object of class
         for (const key in favoriteFruit) {
             console.log(`key_${++number} = ${key}`);
         }
     }
 }
 
-// ES6+ style
+function inheritance() {
+    // ES6+ style
+    class Car {
+        constructor(color, door) {
+            this.color = color;
+            this.door = door;
+            this.wheel = 4;
+        }
+
+        start() {
+            console.log('start the engine!');
+        }
+
+        stop() {
+            console.log('stop the engine!');
+        }
+    }
+
+    class Benz extends Car {
+        park() {
+            console.log('park the car!');
+        }
+    }
+
+    const e300 = new Benz('white', 4);
+}
