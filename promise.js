@@ -8,30 +8,6 @@
 // You will also hear the term resolved used with promises — this means that the promise is settled or “locked-in” to match the state of another promise.
 // https://mzl.la/3nHrfBn and https://bit.ly/3r6y6Xg
 
-// Chained Promises
-// The methods promise.then(), promise.catch(), and promise.finally() are used to associate further action with a promise that becomes settled.
-function chainedPromises() {
-    const order = new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve('accepted.'); // reject(new Error('error..'))
-        }, 3000);
-    });
-    // state: pending                →            state: fulfilled (or rejected)
-    //                          in 3 seconds
-    // result: undefined             →            result: 'accepted.' (or error)
-
-    order
-        .then(function (result) {
-            console.log('your order is ' + result);
-        })
-        .catch(function (err) {
-            console.log(err + ': please place an order again!');
-        })
-        .finally(function () {
-            console.log('promise done...'); // let a loading page disappear
-        });
-}
-
 function callbackHell() {
     const f1 = (func) =>
         setTimeout(() => {
@@ -61,46 +37,94 @@ function callbackHell() {
     });
 }
 
-// Chaining
-// A common need is to execute two or more asynchronous operations back to back, where each subsequent operation starts when the previous operation succeeds, with the result from the previous step.
-// const promise = doSomething();
-// const promise2 = promise.then(successCallback, failureCallback);
-function promiseChaining() {
-    const f1 = () => {
+function promise() {
+    // Chained Promises
+    // The methods promise.then(), promise.catch(), and promise.finally() are used to associate further action with a promise that becomes settled.
+    function chainedPromises() {
+        const order = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve('accepted.'); // reject(new Error('error..'))
+            }, 3000);
+        });
+        // state: pending            →          state: fulfilled (or rejected)
+        //                      in 3 seconds
+        // result: undefined         →          result: 'accepted.' (or error)
+
+        order
+            .then(function (result) {
+                console.log('your order is ' + result);
+            })
+            .catch(function (err) {
+                console.log(err + ': please place an order again!');
+            })
+            .finally(function () {
+                console.log('promise done...'); // let a loading page disappear
+            });
+    }
+
+    const p1 = () => {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve('f1 done');
+                resolve('p1 done');
             }, 1000);
         });
     };
 
-    // msg = 'f1 done'
-    const f2 = (msg) => {
+    // msg = 'p1 done'
+    const p2 = (msg) => {
         console.log(msg);
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve('f2 done');
+                resolve('p2 done');
+                // reject('fail');
             }, 3000);
         });
     };
 
-    // msg = 'f2 done'
-    const f3 = (msg) => {
+    // msg = 'p2 done' (or fail)
+    const p3 = (msg) => {
         console.log(msg);
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve('f3 done');
+                resolve('p3 done');
             }, 2000);
         });
     };
 
-    f1()
-        .then((result) => f2(result))
-        .then((result) => f3(result))
-        .then((result) => console.log(result))
-        .catch(console.log('error occurred!'))
-        .finally(() => {
-            console.log('everything is done.');
+    // Chaining
+    // A common need is to execute two or more asynchronous operations back to back, where each subsequent operation starts when the previous operation succeeds, with the result from the previous step.
+    // const promise = doSomething();
+    // const promise2 = promise.then(successCallback, failureCallback);
+    function promiseChaining() {
+        console.time('promise chaining: ');
+        p1()
+            .then((result) => p2(result))
+            .then((result) => p3(result))
+            .then((result) => console.log(result))
+            .catch(console.log)
+            .finally(() => {
+                console.log('finished');
+                console.timeEnd('promise chaining: ');
+            });
+    }
+
+    // Promise.all(iterable)
+    // The Promise.all() method takes an iterable of promises as an input, and returns a single Promise that resolves to an array of the results of the input promises. This returned promise will resolve when all of the input's promises have resolved, or if the input iterable contains no promises. It rejects immediately upon any of the input promises rejecting or non-promises throwing an error, and will reject with this first rejection message / error.
+    function promiseAll() {
+        console.time('Promise.all(): ');
+        Promise.all([p1(), p2(), p3()]).then((result) => {
+            console.log(result);
+            console.timeEnd('Promise.all(): ');
         });
+    }
+
+    // Promise.race(iterable)
+    // The Promise.race() method returns a promise that fulfills or rejects as soon as one of the promises in an iterable fulfills or rejects, with the value or reason from that promise.
+    function promiseRace() {
+        console.time('Promise.race(): ');
+        Promise.race([p1(), p2(), p3()]).then((result) => {
+            console.log(result);
+            console.timeEnd('Promise.race(): ');
+        });
+    }
 }
-promise();
