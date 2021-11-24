@@ -17,43 +17,48 @@ function* generator() {
     const myGenerator = generator();
 }
 
-// yield
 // The yield keyword is used to pause and resume a generator function (function* or legacy generator function).
+// [rv] = yield [expression]
+// expression Optional
+// Defines the value to return from the generator function via the iterator protocol. If omitted, undefined is returned instead.
+// rv Optional
+// Retrieves the optional value passed to the generator's next() method to resume its execution.
 function yield() {
-    function* foo(index) {
+    function* increase(index) {
         while (index < 2) {
             yield index;
             index++;
         }
     }
 
-    const iterator = foo(0);
+    const iterator = increase(0);
     console.log(iterator.next().value); // expected output: 0
     console.log(iterator.next().value); // expected output: 1
-
-    // yield*
-    // The yield* expression is used to delegate to another generator or iterable object.
-    function yieldStar() {
-        function* gen1() {
-            yield 'w';
-            yield 'o';
-            yield 'r';
-            yield 'l';
-            yield 'd';
-        }
-
-        function* gen2() {
-            yield 'Hello';
-            yield* gen1();
-            yield '!';
-        }
-
-        const iterator = gen2();
-        console.log(iterator.next().value); // Hello
-        console.log(iterator.next().value); // w
-        console.log([...iterator]); // [ 'o', 'r', 'l', 'd', '!' ]
-    }
 }
+
+// yield*
+// The yield* expression is used to delegate to another generator or iterable object.
+function yieldStar() {
+    function* gen1() {
+        yield 'w';
+        yield 'o';
+        yield 'r';
+        yield 'l';
+        yield 'd';
+    }
+
+    function* gen2() {
+        yield 'Hello';
+        yield* gen1();
+        yield '!';
+    }
+
+    const iterator = gen2();
+    console.log(iterator.next().value); // Hello
+    console.log(iterator.next().value); // w
+    console.log([...iterator]); // [ 'o', 'r', 'l', 'd', '!' ]
+}
+
 // The iterator protocol <<***defines a standard way to produce a sequence of values (either finite or infinite)***>>, and potentially a return value when all values have been generated.
 // An object is an iterator when it implements a next() method.
 // Generator.prototype.next(value)
@@ -63,6 +68,27 @@ function generatorNext() {
     console.log(myGenerator.next()); // {value: 2, done: false}
     console.log(myGenerator.next()); // {value: 3, done: false}
     console.log(myGenerator.next()); // {value: 'finished', done: true}
+
+    function* counter(value) {
+        let step;
+
+        while (true) {
+            // You can also send a value with next(value) into the generator. 'step' evaluates as a return value in this syntax [rv] = yield [expression]
+            step = yield ++value;
+
+            if (step) {
+                value += step;
+            }
+        }
+    }
+
+    const generatorFunc = counter(0);
+    console.log(generatorFunc.next().value); // 1
+    console.log(generatorFunc.next().value); // 2
+    console.log(generatorFunc.next().value); // 3
+    console.log(generatorFunc.next(10).value); // 14
+    console.log(generatorFunc.next().value); // 15
+    console.log(generatorFunc.next(10).value); // 26
 }
 
 // Generator.prototype.return(value)
