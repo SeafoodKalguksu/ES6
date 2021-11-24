@@ -1,9 +1,11 @@
-const const global = {
+const global = {
     desc: 'This is a description for global object.',
     company: 'Mozilla',
     name: 'Mike',
     greeting: '   Hello world!   ',
     fruits: ['01. Orange', '02. Apple', '03. Kiwi', '04. Pear'],
+    sentence:
+        'The quick brown fox jumps over the lazy dog. If the dog reacted, was it really lazy?',
 };
 
 // Property
@@ -53,6 +55,31 @@ slice = () => {
     console.log(global.company.slice(-5, 2)); // => ""
     console.log(global.company.slice(-5, -2)); // => "zil"
 };
+
+// String.prototype.replacereplace(regexp, newSubstr)
+// The replace() method returns a new string with some or all matches of a pattern replaced by a replacement. The pattern can be a string or a RegExp, and the replacement can be a string or a function to be called for each match. If pattern is a string, only the first occurrence will be replaced.
+// The original string is left unchanged.
+function replace() {
+    console.log(global.sentence.replace('dog', 'monkey'));
+    // "The quick brown fox jumps over the lazy monkey. If the dog reacted, was it really lazy?"
+
+    const regex = /Dog/i;
+    console.log(global.sentence.replace(regex, 'ferret'));
+    // "The quick brown fox jumps over the lazy ferret. If the dog reacted, was it really lazy?"
+}
+
+// String.prototype.replaceAll()
+// The replaceAll() method returns a new string with all matches of a pattern replaced by a replacement. The pattern can be a string or a RegExp, and the replacement can be a string or a function to be called for each match.
+// The original string is left unchanged.
+function replaceAll() {
+    console.log(global.sentence.replaceAll('dog', 'monkey'));
+    // "The quick brown fox jumps over the lazy monkey. If the monkey reacted, was it really lazy?"
+
+    // global flag required when calling replaceAll with regex
+    const regex = /Dog/gi;
+    console.log(global.sentence.replaceAll(regex, 'ferret'));
+    // "The quick brown fox jumps over the lazy ferret. If the ferret reacted, was it really lazy?"
+}
 
 // String.prototype.substring(indexStart, indexEnd)
 // The substring() method returns the part of the string between the start and
