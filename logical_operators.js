@@ -32,3 +32,13 @@ const name = cachedName || (cachedName = 'Anonymus');
 
 // Checking for null objects before accessing their attributes.
 const studentName = student && student.name;
+
+// Logical assignment operators
+function assignment() {
+    function add(num1, num2) {
+        num1 ||= 0; // num1 = num1 || 0;
+        num2 ||= 0; //num2 = num2 || 0;
+
+        return num1 + num2;
+    }
+}
