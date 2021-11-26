@@ -33,7 +33,15 @@ const name = cachedName || (cachedName = 'Anonymus');
 // Checking for null objects before accessing their attributes.
 const studentName = student && student.name;
 
-// Logical assignment operators
+// Nullish coalescing operator (??) ES2021
+// The nullish coalescing operator (??) is a logical operator that returns its right-hand side operand when its left-hand side operand is ***null or undefined***, and otherwise returns its left-hand side operand.
+function nullishCoalescing() {
+    let number = 0;
+    let a = number || 1; // 1
+    let b = number ?? 1; // 0
+}
+
+// Logical assignment operators ES2021
 function assignment() {
     function add(num1, num2) {
         num1 ||= 0; // num1 = num1 || 0;
