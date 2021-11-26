@@ -66,7 +66,7 @@ function promise() {
         return new Promise((resolve, reject) => {
             setTimeout(() => {
                 resolve('p1 done');
-            }, 1000);
+            }, 3000);
         });
     };
 
@@ -75,9 +75,9 @@ function promise() {
         console.log(msg);
         return new Promise((resolve, reject) => {
             setTimeout(() => {
-                resolve('p2 done');
-                // reject('fail');
-            }, 3000);
+                // resolve('p2 done');
+                reject('fail');
+            }, 1000);
         });
     };
 
@@ -122,9 +122,33 @@ function promise() {
     // The Promise.race() method returns a promise that fulfills or rejects as soon as one of the promises in an iterable fulfills or rejects, with the value or reason from that promise.
     function promiseRace() {
         console.time('Promise.race(): ');
-        Promise.race([p1(), p2(), p3()]).then((result) => {
-            console.log(result);
-            console.timeEnd('Promise.race(): ');
-        });
+        Promise.race([p1(), p2(), p3()])
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+            .finally(() => {
+                console.log('finished');
+                console.timeEnd('Promise.race(): ');
+            });
+    }
+
+    // Promise.any(iterable) ES2021
+    // Promise.any() takes an iterable of Promise objects. It returns a single promise that resolves as soon as any of the promises in the iterable fulfills, with the value of the fulfilled promise. If no promises in the iterable fulfill (if all of the given promises are rejected), then the returned promise is rejected with an AggregateError, a new subclass of Error that groups together individual errors.
+    function promiseAny() {
+        console.time('Promise.any(): ');
+        Promise.any([p1(), p2(), p3()])
+            .then((result) => {
+                console.log(result);
+            })
+            .catch((e) => {
+                console.log(e);
+            })
+            .finally(() => {
+                console.log('finished');
+                console.timeEnd('Promise.any(): ');
+            });
     }
 }
