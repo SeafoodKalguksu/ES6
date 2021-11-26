@@ -64,4 +64,12 @@ function number() {
         isNaN(result); // true
         isNaN(3); // false
     }
+
+    // Numeric separators
+    // To improve readability for numeric literals, underscores (_, U+005F) can be used as separators:
+    function numericSeparators() {
+        let oldStyleBillion = 1000000000; // 1,000,000,000
+        let billion = 1_000_000_000; // 1,000,000,000
+        console.log(oldStyleBillion === billion ? 'true' : 'false');
+    }
 }
