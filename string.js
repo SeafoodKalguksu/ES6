@@ -233,7 +233,19 @@ function reverseString() {
         words.map(reverse).forEach((element) => {
             result += element + ' ';
         });
+
         return result;
     }
-    console.log(flipWordInSentence(global.desc));
+
+    // From the array names return only the palindromes (a palindrome is a word
+    // that reads exactly the same from left to right and backwards).
+    // ['anna', 'bob']
+    function isPalindrome(str) {
+        // return str === reverse(str) ? true : false;
+        if (str.length == 0 || str.length == 1) return true;
+
+        return str.charAt(0) === str.charAt(str.length - 1)
+            ? isPalindrome(str.slice(1, str.length - 1))
+            : false;
+    }
 }
