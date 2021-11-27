@@ -212,10 +212,28 @@ function iterate() {
 function reverseString() {
     function reverse(str) {
         if (!str) {
-            console.log('str is not a string!');
+            console.log(`${str} is not a string!`);
             return '';
         }
 
         return str.split('').reverse().join('');
     }
+
+    // Flip each word in phrase and return a single string
+    // 'This is a description for global object.'
+    // 'sihT si a noitpircsed rof labolg .tcejbo'
+    function flipWordInSentence(sentence) {
+        if (!sentence) {
+            console.log(`${sentence} is not a sentence!`);
+            return '';
+        }
+
+        const words = sentence.split(' ');
+        let result = '';
+        words.map(reverse).forEach((element) => {
+            result += element + ' ';
+        });
+        return result;
+    }
+    console.log(flipWordInSentence(global.desc));
 }
