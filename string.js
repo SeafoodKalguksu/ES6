@@ -208,3 +208,14 @@ function iterate() {
         console.log(`for of: ${str}`);
     }
 }
+
+function reverseString() {
+    function reverse(str) {
+        if (!str) {
+            console.log('str is not a string!');
+            return '';
+        }
+
+        return str.split('').reverse().join('');
+    }
+}
