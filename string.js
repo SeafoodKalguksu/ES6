@@ -249,3 +249,46 @@ function reverseString() {
             : false;
     }
 }
+
+function concatenate() {
+    const school = {
+        student: {
+            name: 'Richard Kalehoff',
+            guardian: 'Mr. Kalehoff',
+        },
+        teacher: {
+            name: 'Mrs. Wilson',
+            room: 'N231',
+        },
+    };
+
+    // Prior to ES6, the old way to concatenate strings together was by
+    // using the string concatenation operator ( + ).
+    // This works alright, but it gets more complicated when you need to build
+    // multi-line strings.
+    function concatenationOperator() {
+        let noteForES5 =
+            school.teacher.name +
+            ',\n\n' +
+            'Please excuse ' +
+            school.student.name +
+            '.\n' +
+            'He is recovering from the flu.\n\n' +
+            'Thank you,\n' +
+            school.student.guardian;
+    }
+
+    //  However, that’s changed with the introduction of template literals.
+    // By using template literals, you can drop the quotes along with
+    // the string concatenation operator. Also, you can reference
+    // the object's properties inside expressions.
+    function templateLiterals() {
+        let noteForES6 = `${school.teacher.name},
+    
+        Please excuse ${school.student.name}.
+        He is recovering from the flu.
+        
+        Thank you,
+        ${school.student.guardian}`;
+    }
+}
