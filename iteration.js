@@ -4,14 +4,9 @@
 // while - loops through a block of code while a specified condition is true
 // do/while - also loops through a block of code while a specified condition is true
 
-// The for...in statement iterates over all enumerable properties of an object
-// that are keyed by strings (ignoring ones keyed by Symbols), including
-// inherited enumerable properties.
-// for (key in object) {
-//     statement
-//   }
+// The for...in statement iterates over all enumerable properties of an object that are keyed by strings (ignoring ones keyed by Symbols), including inherited enumerable properties.
 // key: the key of each property of the object on each iteration.
-// object: Object whose non-Symbol enumerable properties are iterated over.
+// object: Object whose ***non-Symbol enumerable properties*** are iterated over.
 function forIn() {
     const object = { a: 1, b: 2, c: 3 };
     for (const property in object) {
@@ -22,9 +17,6 @@ function forIn() {
 // The for...of statement creates a loop iterating over iterable objects,
 // including: built-in String, Array, array-like objects (e.g., arguments
 // or NodeList), TypedArray, Map, Set, and user-defined iterables.
-// for (value of iterable) {
-//     statement
-// }
 // value: the value of each distinct property of the object.
 // iterable: Object whose iterable properties are iterated.
 function forOf() {
@@ -42,3 +34,5 @@ function forOf() {
         }
     }
 }
+
+// NOTE: The forEach loop is another type of for loop in JavaScript. However, forEach() is actually an array method, so it can only be used exclusively with arrays. ***There is also no way to stop or break a forEach loop. If you need that type of behavior in your loop, you’ll have to use a basic for loop.***
