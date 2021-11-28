@@ -61,17 +61,16 @@ function redeclare() {
 // the let variables but does not initialize the variables.
 // Referencing uninitialized variables will cause a ReferenceError.
 // The let variables have the same execution phase as the var variables.
-function hoist() {
-    let age = 30;
-    var gender = 'female';
-
-    function showAge() {
+function hoisting() {
+    // let and const hoisting
+    // Variables declared with let and const are also hoisted but, unlike var, are not initialized with a default value. An exception will be thrown if a variable declared with let or const is read before it is initialized.
+    function keywordLet() {
         // 'let age' is hoisted here but the assignment is not hoisted here!
-        // console.log(age); // ReferenceError: Cannot access 'age' before initialization.
+        console.log(age); // ReferenceError: Cannot access 'age' before initialization.
         let age = 20;
     }
 
-    function showGender() {
+    function keywordVar() {
         console.log(gender); // undefined, 'var gender' is hoisted here.
         var gender = 'male';
     }
