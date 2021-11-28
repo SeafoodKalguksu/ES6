@@ -30,25 +30,19 @@ function args() {
 }
 
 // Rest parameters
-// The rest parameter syntax allows a function to accept
-// an indefinite number of arguments as an array,
+// The rest parameter, also written with three consecutive dots ( ... ),
+// allows you to represent an indefinite number of elements as an array.
 // ES6+: rest parameters should be preferred because you can use array methods.
 function restParameters() {
-    function example0() {
-        const add = (...args) => args.reduce((acc, cur) => acc + cur);
-        let sum = add(3, 4, 5, 6);
-        console.log(sum);
+    add = (...args) => args.reduce((acc, cur) => acc + cur);
+    let sum = add(3, 4, 5, 6); // 18
+    sum = add.apply(null, [2, 3, 4, 5]); // 14
 
-        sum = add.apply(null, [2, 3, 4, 5]);
-        console.log(sum);
+    // Using Math.min/Math.max apply
+    const numbers = [5, 6, 2, 3, 7]; // min/max number in an array
+    let max = Math.max.apply(null, numbers); // let max = Math.max(5, 6, 2, 3, 7);
 
-        // Using Math.min/Math.max apply
-        const numbers = [5, 6, 2, 3, 7]; // min/max number in an array
-        let max = Math.max.apply(null, numbers); // let max = Math.max(5, 6, 2, 3, 7);
-        console.log(max);
-    }
-
-    function example1() {
+    function constructor() {
         function User(name, age, ...skills) {
             this.name = name;
             this.age = age;
@@ -58,8 +52,5 @@ function restParameters() {
         const user1 = new User('Mike', 29, 'HTML5', 'CSS');
         const user2 = new User('Jane', 29, 'English');
         const user3 = new User('Amy', 21);
-        console.log(user1);
-        console.log(user2);
-        console.log(user3);
     }
 }
